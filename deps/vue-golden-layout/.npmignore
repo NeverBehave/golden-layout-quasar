@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+demo
+test
+.*
+yalc.lock
+package-lock.*
+*.lock
+webpack.*
+coverage
+doc
+.eslint*
