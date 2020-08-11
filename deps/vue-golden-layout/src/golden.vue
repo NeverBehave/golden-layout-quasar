@@ -34,6 +34,7 @@ function unobserve(obj: any, key: string = 'prototype') {
 	obj.__ob__ = new Observer({});
 }
 
+console.log("hello")
 unobserve(GoldenLayout);
 unobserve((<any>GoldenLayout).__lm.items.AbstractContentItem);
 
@@ -104,9 +105,9 @@ export default class goldenLayout extends goldenContainer {
 	},*/
 
 	gl: GoldenLayout
-	
+
 	//#region vNode helpers
-	
+
 	appendVNodes(container: any, vNodes: any, state?: any) {
 		var el = document.createElement('div');
 		container.getElement().append(el);
@@ -132,7 +133,7 @@ export default class goldenLayout extends goldenContainer {
 	get definedVueComponent() { return this; }
 	@Provide() get layout() { return this; }
 	@Provide() groupColor: string|null = null
-	
+
 	getSubChild(path: string): goldenChild {
 		if(!isSubWindow) return this.getChild(path);
 		var rootPathLength: number = 0, rootPathComponent: goldenItem|null = null;
@@ -193,7 +194,7 @@ export default class goldenLayout extends goldenContainer {
 			if(this.parentLayout)
 				(<any>gl)._components = (<any>this.parentLayout.gl)._components
 			else {
-				gl.registerComponent(genericTemplate, 
+				gl.registerComponent(genericTemplate,
 					(container: any, state: any)=> {
 						var component = this.getSubChild(container._config.vue)
 						container.getElement().append(component.$el);
@@ -205,7 +206,7 @@ export default class goldenLayout extends goldenContainer {
 					gl.registerComponent(tpl, this.globalComponentWrap(globalComponents[tpl]));
 			}
 			//#endregion
-				
+
 			//#region Events
 			var raiseStateChanged: (arg?: number)=> void;
 			//TODO: have only one raiseStateChanged function ?
